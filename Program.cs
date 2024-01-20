@@ -5,6 +5,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//add cors and accept all origins
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(corsPolicyBuilder =>
+    {
+        corsPolicyBuilder.AllowAnyOrigin();
+        corsPolicyBuilder.AllowAnyHeader();
+        corsPolicyBuilder.AllowAnyMethod();
+    });
+});
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(_ =>
 {
@@ -25,5 +35,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//add cors
+app.UseCors();
 
 app.Run();
