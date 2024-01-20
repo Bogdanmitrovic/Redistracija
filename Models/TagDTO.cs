@@ -4,8 +4,7 @@ namespace Redistracija.Models;
 
 public class TagDto
 {
-    [JsonPropertyName(name:"registracija")]
-    public string? Registracija { get; set; }
-    [JsonPropertyName(name:"kredit")]
-    public int Kredit { get; set; }
+    [JsonPropertyName("registracija")] public string? Registracija { get; set; }
+
+    [JsonPropertyName("kredit")] public int Kredit { get; set; }
 }

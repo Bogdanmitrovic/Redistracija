@@ -8,7 +8,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IConnectionMultiplexer>(_ =>
 {
-    ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(builder.Configuration["Redis:ConnectionString"]!);
+    var redis = ConnectionMultiplexer.Connect(builder.Configuration["Redis:ConnectionString"]!);
     return redis;
 });
 
